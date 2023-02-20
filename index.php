@@ -14,7 +14,7 @@
 
   <div class="container">
     <div class="like-icon">
-      <i class="fa fa-comment-o" aria-hidden="true"></i><img src="icons/opiniao.png" alt="">
+     <img src="icons/opiniao.png" alt="">
     </div>
 
 
@@ -32,7 +32,7 @@
         </select>
       </div>
 
-      <input type="text" name="username" placeholder="Seu nome" required>
+      <input type="text" name="username" placeholder="Seu primeiro nome" required>
       <textarea name="comment" placeholder="Adicionar Comentario" required></textarea>
       <input type="submit" value="Adicionar comentário">
     </form>
