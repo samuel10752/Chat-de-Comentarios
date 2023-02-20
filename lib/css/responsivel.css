@@ -1,6 +1,7 @@
 /* Responsiveldade do codigo */
 
 @media (max-width: 1400px) {
+  
   input[type="submit"] {
     width: 100%;
     margin: 10px 0;
@@ -21,10 +22,10 @@
   }
 
   #comments{
-    margin-left: -5%;
+    margin-left: -15%;
     font-size: 15px;
     margin-top: 1%;
-    width: 105%;
+    width: 117%;
     height: 200px;
     overflow-y: scroll;
     word-wrap: break-word;
@@ -71,10 +72,10 @@
     }
 
     #comments{
-      margin-left: -5%;
+      margin-left: -15%;
       font-size: 15px;
       margin-top: 1%;
-      width: 105%;
+      width: 117%;
       height: 200px;
       overflow-y: scroll;
       word-wrap: break-word;
@@ -99,7 +100,6 @@
       margin-top: 10px;
     }
   }
-
 
 
   @media (max-width: 1120px) {

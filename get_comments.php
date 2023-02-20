@@ -12,9 +12,11 @@ foreach ($comments as $comment) {
   $parts = explode(" ", $comment);
   if (count($parts) >= 3) {
     // Separa o ícone, nome do usuário e o comentário em variáveis distintas
-    list($icon, $username, $comment) = $parts;
-    echo "<img src='icons/" . htmlspecialchars($icon) . ".png'> <strong>" . htmlspecialchars($username) . "</strong>:<br><br> " . htmlspecialchars($comment) . "<br><br>";
+    list($icon, $username, $first_word) = $parts;
+    $rest_of_comment = implode(" ", array_slice($parts, 3)); // Junta todas as palavras restantes do comentário
+    echo "<img src='icons/" . htmlspecialchars($icon) . ".png'> <strong>" . htmlspecialchars($username) . "</strong>:<br>" . htmlspecialchars($first_word . " " . $rest_of_comment) . "<br><br>";
   }
 }
 echo "</ul>";
+
 ?>
