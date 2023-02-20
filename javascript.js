@@ -2,17 +2,17 @@ function updateProfilePicture(icon) {
   document.getElementById("profile-icon").src = "icons/" + icon + ".png";
 }
 
-document.querySelector('.like-icon').addEventListener('click', function() {
-  document.querySelector('form').style.display = 
+document.querySelector('.like-icon').addEventListener('click', function () {
+  document.querySelector('form').style.display =
     document.querySelector('form').style.display === 'none' ? 'block' : 'none';
 });
 
- // Função para carregar os comentários
- function loadComments() {
+// Função para carregar os comentários
+function loadComments() {
   // Faz uma requisição GET para o arquivo PHP que retorna os comentários
   var xhr = new XMLHttpRequest();
   xhr.open("GET", "get_comments.php", true);
-  xhr.onreadystatechange = function() {
+  xhr.onreadystatechange = function () {
     if (xhr.readyState === 4 && xhr.status === 200) {
       // Insere os comentários na página
       document.getElementById("comments").innerHTML = xhr.responseText;
@@ -22,33 +22,12 @@ document.querySelector('.like-icon').addEventListener('click', function() {
 }
 
 // Carrega os comentários assim que a página é carregada
-window.onload = function() {
+window.onload = function () {
   loadComments();
 };
 
-
-
- // salvar o comentario
-
- document.querySelector('form').addEventListener('submit', function(e) {
-  e.preventDefault();
-  var xhr = new XMLHttpRequest();
-  xhr.open("POST", "add_comment.php", true);
-  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-  xhr.onreadystatechange = function() {
-    if (xhr.readyState == 4 && xhr.status == 200) {
-      loadComments();
-    }
-  };
-  var comment = document.querySelector('textarea[name="comment"]').value;
-  var username = document.querySelector('input[name="username"]').value;
-  var icon = document.querySelector('select[name="icon"]').value;
-  xhr.send("comment=" + encodeURIComponent(comment) + "&username=" + encodeURIComponent(username) + "&icon=" + encodeURIComponent(icon));
-});
-
-
 // Adicionar comentário com o ícone selecionado
-document.querySelector('form').addEventListener('submit', function(event) {
+document.querySelector('form').addEventListener('submit', function (event) {
   event.preventDefault();
 
   // Recuperar dados do formulário
@@ -73,10 +52,16 @@ document.querySelector('form').addEventListener('submit', function(event) {
   var xhr = new XMLHttpRequest();
   xhr.open("POST", "add_comment.php", true);
   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-  xhr.onreadystatechange = function() {
+  xhr.onreadystatechange = function () {
     if (xhr.readyState == 4 && xhr.status == 200) {
       loadComments();
     }
   };
+  // Rolar a página para o último comentário
+  var lastComment = document.getElementById('comments').lastChild;
+  lastComment.scrollIntoView();
   xhr.send("comment=" + encodeURIComponent(comment) + "&username=" + encodeURIComponent(username) + "&icon=" + encodeURIComponent(icon));
 });
+
+
+
